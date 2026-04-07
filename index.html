@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project H.A.M.E.L.I.N.</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, sans-serif;
+            background: #0a1628;
+            color: #f0eee6;
+            min-height: 100vh;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(180deg, #0a1628 0%, #162244 100%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: #d4af37;
+            letter-spacing: 6px;
+            margin-bottom: 8px;
+        }
+
+        .hero .subtitle {
+            color: #a09880;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        .hero .tagline {
+            color: #c0bab0;
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto 20px;
+        }
+
+        .social-row {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .social-row a {
+            color: #d4af37;
+            text-decoration: none;
+            padding: 8px 20px;
+            border: 1px solid #d4af3744;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .social-row a:hover {
+            background: #d4af3722;
+            border-color: #d4af37;
+        }
+
+        .section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-desc {
+            color: #a09880;
+            margin-bottom: 24px;
+            font-size: 0.95rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            vertical-align: middle;
+        }
+
+        .badge-beta { background: #00ff88; color: #111; }
+        .badge-coming { background: #555; color: #ccc; }
+
+        /* PiperCast */
+        .pipercast { border-left: 4px solid #00ff88; padding-left: 20px; }
+        .pipercast .section-title { color: #00ff88; }
+
+        /* Marionette */
+        .marionette { border-left: 4px solid #9b59b6; padding-left: 20px; }
+        .marionette .section-title { color: #9b59b6; }
+
+        /* Koppelberg */
+        .koppelberg { border-left: 4px solid #e67e22; padding-left: 20px; }
+        .koppelberg .section-title { color: #e67e22; }
+
+        .channel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 12px;
+        }
+
+        .channel-card {
+            background: #12203c;
+            border: 1px solid #1a2a4a;
+            border-radius: 12px;
+            padding: 16px;
+            transition: all 0.2s;
+        }
+
+        .channel-card:hover {
+            border-color: #00ff88;
+            transform: translateY(-2px);
+        }
+
+        .channel-card .lang {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .channel-card .lang-native {
+            color: #a09880;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+
+        .channel-card .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .channel-card .links a {
+            text-decoration: none;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transition: opacity 0.2s;
+        }
+
+        .channel-card .links a:hover { opacity: 0.8; }
+
+        .link-youtube { background: #ff0000; color: #fff; }
+        .link-twitch { background: #9146ff; color: #fff; }
+        .link-niconico { background: #ff6699; color: #fff; }
+        .link-afreeca { background: #0078ff; color: #fff; }
+        .link-nimo { background: #ff8c00; color: #fff; }
+        .link-soon { background: #333; color: #777; cursor: default; }
+        .link-soon:hover { opacity: 1; }
+
+        .channel-card.coming-soon { opacity: 0.5; }
+        .channel-card.coming-soon:hover { border-color: #1a2a4a; transform: none; }
+
+        .color-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+
+        .divider {
+            border: none;
+            border-top: 1px solid #1a2a4a;
+            margin: 20px auto;
+            max-width: 900px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #555;
+            font-size: 0.8rem;
+        }
+
+        .footer a { color: #d4af37; text-decoration: none; }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; letter-spacing: 3px; }
+            .channel-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <h1>H.A.M.E.L.I.N.</h1>
+    <div class="subtitle">HARMONIZED AI MULTI-PROJECT EXECUTION LAYER FOR INTEGRATED NETWORKS</div>
+    <div class="tagline">AI-powered creative studio. We build things that run 24/7.</div>
+    <div class="social-row">
+        <a href="https://x.com/hamelin_lab" target="_blank">X / Twitter</a>
+        <a href="https://x.com/PiperCast_world" target="_blank">PiperCast X</a>
+    </div>
+</div>
+
+<hr class="divider">
+
+<div class="section pipercast">
+    <div class="section-title">
+        PiperCast <span class="badge badge-beta">OPEN BETA</span>
+    </div>
+    <div class="section-desc">
+        AI sports commentary in 9 languages. 24/7 live coverage of MLB, NBA, Soccer, Cricket, F1, Tennis.
+        Built by AI, shaped by viewers.
+    </div>
+
+    <div class="channel-grid">
+        <div class="channel-card">
+            <div class="lang"><span class="color-dot" style="background:#3498db"></span>English</div>
+            <div class="lang-native">MLB / NBA / Soccer / F1</div>
+            <div class="links">
+                <a href="#" class="link-soon">YouTube (soon)</a>
+                <a href="https://twitch.tv/PiperCast_EN" class="link-twitch" target="_blank">Twitch</a>
+            </div>
+        </div>
+
+        <div class="channel-card">
+            <div class="lang"><span class="color-dot" style="background:#ff9933"></span>Hindi</div>
+            <div class="lang-native">Cricket / IPL / T20 / ODI</div>
+            <div class="links">
+                <a href="#" class="link-soon">YouTube (soon)</a>
+                <a href="https://twitch.tv/PiperCast_HI" class="link-twitch" target="_blank">Twitch</a>
+            </div>
+        </div>
+
+        <div class="channel-card">
+            <div class="lang"><span class="color-dot" style="background:#e74c3c"></span>Japanese</div>
+            <div class="lang-native">MLB / NPB / J-League / F1</div>
+            <div class="links">
+                <a href="#" class="link-soon">YouTube (soon)</a>
+                <a href="https://twitch.tv/PiperCast_JA" class="link-twitch" target="_blank">Twitch</a>
+                <a href="#" class="link-soon">NicoNico (soon)</a>
+            </div>
+        </div>
+
+        <div class="channel-card coming-soon">
+            <div class="lang"><span class="color-dot" style="background:#00b4d8"></span>Korean <span class="badge badge-coming">SOON</span></div>
+            <div class="lang-native">KBO / MLB / K-League</div>
+            <div class="links">
+                <a href="#" class="link-soon">YouTube</a>
+                <a href="#" class="link-soon">Twitch</a>
+                <a href="#" class="link-soon">AfreecaTV</a>
+            </div>
+        </div>
+
+        <div class="channel-card coming-soon">
+            <div class="lang"><span class="color-dot" style="background:#f1c40f"></span>Chinese <span class="badge badge-coming">SOON</span></div>
+            <div class="lang-native">NBA / Soccer / F1</div>
+            <div class="links">
+                <a href="#" class="link-soon">YouTube</a>
+                <a href="#" class="link-soon">Twitch</a>
+            </div>
+        </div>
+
+        <div class="channel-card coming-soon">
+            <div class="lang"><span class="color-dot" style="background:#2ecc71"></span>Arabic <span class="badge badge-coming">SOON</span></div>
+            <div class="lang-native">Soccer / Cricket</div>
+            <div class="links">
+                <a href="#" class="link-soon">YouTube</a>
+                <a href="#" class="link-soon">Twitch</a>
+            </div>
+        </div>
+
+        <div class="channel-card coming-soon">
+            <div class="lang"><span class="color-dot" style="background:#e74c00"></span>Indonesian <span class="badge badge-coming">SOON</span></div>
+            <div class="lang-native">Soccer / Badminton</div>
+            <div class="links">
+                <a href="#" class="link-soon">YouTube</a>
+                <a href="#" class="link-soon">Twitch</a>
+                <a href="#" class="link-soon">Nimo TV</a>
+            </div>
+        </div>
+
+        <div class="channel-card coming-soon">
+            <div class="lang"><span class="color-dot" style="background:#a8e600"></span>Portuguese <span class="badge badge-coming">SOON</span></div>
+            <div class="lang-native">Soccer / F1 / Volleyball</div>
+            <div class="links">
+                <a href="#" class="link-soon">YouTube</a>
+                <a href="#" class="link-soon">Twitch</a>
+            </div>
+        </div>
+
+        <div class="channel-card coming-soon">
+            <div class="lang"><span class="color-dot" style="background:#9b59b6"></span>Spanish <span class="badge badge-coming">SOON</span></div>
+            <div class="lang-native">Soccer / Baseball / Boxing</div>
+            <div class="links">
+                <a href="#" class="link-soon">YouTube</a>
+                <a href="#" class="link-soon">Twitch</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr class="divider">
+
+<div class="section marionette">
+    <div class="section-title">
+        Marionette.Mouse.Studio <span class="badge badge-coming">COMING SOON</span>
+    </div>
+    <div class="section-desc">
+        Roblox game studio. Building immersive experiences.
+    </div>
+</div>
+
+<hr class="divider">
+
+<div class="section koppelberg">
+    <div class="section-title">
+        Koppelberg Games <span class="badge badge-coming">COMING SOON</span>
+    </div>
+    <div class="section-desc">
+        Indie game studio. Unity, Godot, and beyond.
+    </div>
+</div>
+
+<hr class="divider">
+
+<div class="footer">
+    Project H.A.M.E.L.I.N. &mdash; AI-powered creative studio<br>
+    <a href="https://x.com/hamelin_lab">@ProjectHAMELIN</a>
+</div>
+
+</body>
+</html>
